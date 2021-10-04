@@ -1,0 +1,32 @@
+{ 
+	"type":"minecraft:crafting_shaped",
+	"pattern":
+	[
+		"crc",
+		"ipi",
+		"cic"
+	],
+	"key":
+	{
+		"c":
+		{
+			"item":"minecraft:copper_ingot"
+		},
+		"p":
+		{
+			"item":"minecraft:carved_pumpkin"
+		},
+		"i":
+		{
+			"tag":"forge:ingots/iron"
+		},
+		"r":
+		{
+			"item":"minecraft:redstone"
+		}
+	},
+	"result":
+	{
+		"item":"dicemcdeathgen:pumpkin_of_pain"
+	}
+}

@@ -1,0 +1,32 @@
+{ 
+	"type":"minecraft:crafting_shaped",
+	"pattern":
+	[
+		"grg",
+		"ipi",
+		"gig"
+	],
+	"key":
+	{
+		"g":
+		{
+			"tag":"forge:ingots/gold"
+		},
+		"p":
+		{
+			"tag":"forge:glass_panes"
+		},
+		"r":
+		{
+			"item":"minecraft:redstone_block"
+		},
+		"i":
+		{
+			"item":"minecraft:fermented_spider_eye"
+		}
+	},
+	"result":
+	{
+		"item":"dicemcdeathgen:upgrade_2"
+	}
+}

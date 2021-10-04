@@ -1,0 +1,28 @@
+modLoader="javafml" 
+loaderVersion="[37,)"
+license="All rights reserved"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+
+[[mods]]
+modId="dicemcdeathgen"
+version="${file.jarVersion}"
+displayName="Death Generator"
+credits="Thanks for MMD for hosting the SpookyJam event, and the support in creating this mod."
+authors="Caltinor"
+description='''
+A generator that sucks the life out of things around you and gives it to you as energy.
+'''
+
+[[dependencies.dicemcdeathgen]] #optional
+    modId="forge"
+    mandatory=true
+    versionRange="[37,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.dicemcdeathgen]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.17.1,1.18)"
+    ordering="NONE"
+    side="BOTH"

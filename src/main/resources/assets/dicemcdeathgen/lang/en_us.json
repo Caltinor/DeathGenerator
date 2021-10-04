@@ -1,0 +1,13 @@
+{
+	"block.dicemcdeathgen.pumpkin_of_pain":"Pumpkin of Pain",
+	"block.dicemcdeathgen.pumpkin_of_suffering":"Pumpkin of Suffering",
+	"block.dicemcdeathgen.pumpkin_of_hellfire":"Pumpkin of Hellfire",
+	
+	"item.dicemcdeathgen.pumpkin_of_pain":"Pumpkin of Pain",
+	"item.dicemcdeathgen.pumpkin_of_suffering":"Pumpkin of Suffering",
+	"item.dicemcdeathgen.pumpkin_of_hellfire":"Pumpkin of Hellfire",
+	"item.dicemcdeathgen.upgrade_2":"Pain Upgrader",
+	"item.dicemcdeathgen.upgrade_3":"Suffering Upgrader",
+	
+	"msg.dicemcdeathgen.current_energy":"Stored: %s FE"
+}

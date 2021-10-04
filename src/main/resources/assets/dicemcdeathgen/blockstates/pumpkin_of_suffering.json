@@ -1,0 +1,8 @@
+{ 
+	"variants": { 
+		"facing=north": {"model":"dicemcdeathgen:block/pumpkin_of_suffering"},
+		"facing=east": {"model":"dicemcdeathgen:block/pumpkin_of_suffering", "y": 90},
+		"facing=south": {"model":"dicemcdeathgen:block/pumpkin_of_suffering", "y": 180},
+		"facing=west": {"model":"dicemcdeathgen:block/pumpkin_of_suffering", "y": 270}
+	}
+}

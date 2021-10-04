@@ -1,0 +1,32 @@
+{ 
+	"type":"minecraft:crafting_shaped",
+	"pattern":
+	[
+		"grg",
+		"ipi",
+		"gig"
+	],
+	"key":
+	{
+		"g":
+		{
+			"tag":"forge:ingots/gold"
+		},
+		"p":
+		{
+			"item":"dicemcdeathgen:pumpkin_of_pain"
+		},
+		"r":
+		{
+			"item":"minecraft:ender_eye"
+		},
+		"i":
+		{
+			"item":"minecraft:fermented_spider_eye"
+		}
+	},
+	"result":
+	{
+		"item":"dicemcdeathgen:pumpkin_of_suffering"
+	}
+}

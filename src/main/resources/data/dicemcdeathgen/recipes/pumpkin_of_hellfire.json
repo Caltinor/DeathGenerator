@@ -1,0 +1,32 @@
+{ 
+	"type":"minecraft:crafting_shaped",
+	"pattern":
+	[
+		"nsn",
+		"tpt",
+		"ntn"
+	],
+	"key":
+	{
+		"n":
+		{
+			"tag":"forge:ingots/netherite"
+		},
+		"p":
+		{
+			"item":"dicemcdeathgen:pumpkin_of_suffering"
+		},
+		"s":
+		{
+			"item":"minecraft:nether_star"
+		},
+		"t":
+		{
+			"item":"minecraft:ghast_tear"
+		}
+	},
+	"result":
+	{
+		"item":"dicemcdeathgen:pumpkin_of_hellfire"
+	}
+}

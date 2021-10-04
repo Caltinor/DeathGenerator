@@ -1,0 +1,32 @@
+{ 
+	"type":"minecraft:crafting_shaped",
+	"pattern":
+	[
+		"nsn",
+		"tpt",
+		"ntn"
+	],
+	"key":
+	{
+		"n":
+		{
+			"tag":"forge:ingots/netherite"
+		},
+		"p":
+		{
+			"tag":"forge:glass_panes"
+		},
+		"s":
+		{
+			"item":"minecraft:nether_star"
+		},
+		"t":
+		{
+			"item":"minecraft:ghast_tear"
+		}
+	},
+	"result":
+	{
+		"item":"dicemcdeathgen:upgrade_3"
+	}
+}
