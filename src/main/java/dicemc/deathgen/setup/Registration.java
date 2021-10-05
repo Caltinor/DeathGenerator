@@ -2,13 +2,8 @@ package dicemc.deathgen.setup;
 
 import dicemc.deathgen.DeathGenerator;
 import dicemc.deathgen.block.DeathGeneratorBlock;
-import dicemc.deathgen.block.DeathGeneratorBlock2;
-import dicemc.deathgen.block.DeathGeneratorBlock3;
-import dicemc.deathgen.item.UpgradeItem2;
-import dicemc.deathgen.item.UpgradeItem3;
+import dicemc.deathgen.item.UpgradeItem;
 import dicemc.deathgen.tile.DeathGeneratorBlockEntity;
-import dicemc.deathgen.tile.DeathGeneratorBlockEntity2;
-import dicemc.deathgen.tile.DeathGeneratorBlockEntity3;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
@@ -37,22 +32,20 @@ public class Registration {
     }
 
     //BLOCKS
-    public static final RegistryObject<DeathGeneratorBlock> DEATH_GENERATOR_BLOCK = BLOCKS.register("pumpkin_of_pain", () -> new DeathGeneratorBlock());
-    public static final RegistryObject<DeathGeneratorBlock2> DEATH_GENERATOR_BLOCK2 = BLOCKS.register("pumpkin_of_suffering", () -> new DeathGeneratorBlock2());
-    public static final RegistryObject<DeathGeneratorBlock3> DEATH_GENERATOR_BLOCK3 = BLOCKS.register("pumpkin_of_hellfire", () -> new DeathGeneratorBlock3());
+    public static final RegistryObject<DeathGeneratorBlock> DEATH_GENERATOR_BLOCK = BLOCKS.register("pumpkin_of_pain", () -> new DeathGeneratorBlock(DeathGeneratorBlock.Tier.TIER_1));
+    public static final RegistryObject<DeathGeneratorBlock> DEATH_GENERATOR_BLOCK2 = BLOCKS.register("pumpkin_of_suffering", () -> new DeathGeneratorBlock(DeathGeneratorBlock.Tier.TIER_2));
+    public static final RegistryObject<DeathGeneratorBlock> DEATH_GENERATOR_BLOCK3 = BLOCKS.register("pumpkin_of_hellfire", () -> new DeathGeneratorBlock(DeathGeneratorBlock.Tier.TIER_3));
 
     //ITEMS
     public static final RegistryObject<Item> DEATH_GENERATOR = ITEMS.register("pumpkin_of_pain", () -> new BlockItem(DEATH_GENERATOR_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
     public static final RegistryObject<Item> DEATH_GENERATOR2 = ITEMS.register("pumpkin_of_suffering", () -> new BlockItem(DEATH_GENERATOR_BLOCK2.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
     public static final RegistryObject<Item> DEATH_GENERATOR3 = ITEMS.register("pumpkin_of_hellfire", () -> new BlockItem(DEATH_GENERATOR_BLOCK3.get(), new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
 
-    public static final RegistryObject<Item> TIER2_UPGRADE = ITEMS.register("upgrade_2", () -> new UpgradeItem2(new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
-    public static final RegistryObject<Item> TIER3_UPGRADE = ITEMS.register("upgrade_3", () -> new UpgradeItem3(new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE)));
+    public static final RegistryObject<Item> TIER2_UPGRADE = ITEMS.register("upgrade_2", () -> new UpgradeItem(new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE), DeathGeneratorBlock.Tier.TIER_1));
+    public static final RegistryObject<Item> TIER3_UPGRADE = ITEMS.register("upgrade_3", () -> new UpgradeItem(new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE), DeathGeneratorBlock.Tier.TIER_2));
 
     //BLOCK ENTITIES
-    public static final RegistryObject<BlockEntityType<DeathGeneratorBlockEntity>> DEATH_GENERATOR_TYPE = BLOCKENTITIES.register("pumpkin_of_pain", () -> BlockEntityType.Builder.of(DeathGeneratorBlockEntity::new, DEATH_GENERATOR_BLOCK.get()).build(null));
-    public static final RegistryObject<BlockEntityType<DeathGeneratorBlockEntity2>> DEATH_GENERATOR_TYPE2 = BLOCKENTITIES.register("pumpkin_of_suffering", () -> BlockEntityType.Builder.of(DeathGeneratorBlockEntity2::new, DEATH_GENERATOR_BLOCK2.get()).build(null));
-    public static final RegistryObject<BlockEntityType<DeathGeneratorBlockEntity3>> DEATH_GENERATOR_TYPE3 = BLOCKENTITIES.register("pumpkin_of_hellfire", () -> BlockEntityType.Builder.of(DeathGeneratorBlockEntity3::new, DEATH_GENERATOR_BLOCK3.get()).build(null));
+    public static final RegistryObject<BlockEntityType<DeathGeneratorBlockEntity>> DEATH_GENERATOR_TYPE = BLOCKENTITIES.register("pumpkin_of", () -> BlockEntityType.Builder.of(DeathGeneratorBlockEntity::new, DEATH_GENERATOR_BLOCK.get(), DEATH_GENERATOR_BLOCK2.get(), DEATH_GENERATOR_BLOCK3.get()).build(null));
 
     //CONTAINERS
 	/*public static final RegistryObject<MenuType<DeathGeneratorContainer>> GENERATOR_CONTAINER = CONTAINERS.register("death_generator", () -> IForgeContainerType.create((windowId, inv, data) -> {

@@ -20,17 +20,24 @@ import net.minecraftforge.energy.EnergyStorage;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class DeathGeneratorBlockEntity extends BlockEntity implements IGeneratorBE {
-    private final int tier = 1;
-    private final EnergyStorage energyStorage = new EnergyStorage((int) Math.pow(Config.GENERATOR_CAPACITY.get(), this.tier), (int) Math.pow(Config.GENERATOR_TRANSFER_RATE.get(), this.tier));
+public class DeathGeneratorBlockEntity extends BlockEntity {
+    private final int modifier;
+    private final EnergyStorage energyStorage;
 
     public DeathGeneratorBlockEntity(BlockPos pos, BlockState state) {
         super(Registration.DEATH_GENERATOR_TYPE.get(), pos, state);
+        switch (((DeathGeneratorBlock) state.getBlock()).getTier()) {
+            case TIER_1 -> this.modifier = 1;
+            case TIER_2 -> this.modifier = 2;
+            case TIER_3 -> this.modifier = 3;
+            default -> this.modifier = 0;
+        }
+        this.energyStorage = new EnergyStorage((int) Math.pow(Config.GENERATOR_CAPACITY.get(), this.modifier), (int) Math.pow(Config.GENERATOR_TRANSFER_RATE.get(), this.modifier));
     }
 
     @Override
     public void load(CompoundTag tag) {
-		this.energyStorage.deserializeNBT(tag.get("energy"));
+        this.energyStorage.deserializeNBT(tag.get("energy"));
         super.load(tag);
     }
 
@@ -51,19 +58,19 @@ public class DeathGeneratorBlockEntity extends BlockEntity implements IGenerator
             if (!Config.KILL_ILLAGERS.get() && Registration.ILLAGERS.contains(entity.getType())) continue;
             if (!Config.KILL_VILLAGERS.get() && Registration.VILLAGERS.contains(entity.getType())) continue;
             if (!Config.KILL_PLAYERS.get() && entity.getType().equals(EntityType.PLAYER)) continue;
-            float damageDealt = entity.getMaxHealth() * (float) dmgRatio * this.tier;
+            float damageDealt = entity.getMaxHealth() * (float) dmgRatio * this.modifier;
             entity.hurt(DamageSource.MAGIC, damageDealt);
-			this.energyStorage.receiveEnergy((int) (damageDealt * Config.ENERGY_PER_HITPOINT.get()), false);
+            this.energyStorage.receiveEnergy((int) (damageDealt * Config.ENERGY_PER_HITPOINT.get()), false);
         }
-		this.sendOutPower();
+        this.sendOutPower();
     }
 
     public int getEnergyAmount() {
         return this.energyStorage.getEnergyStored();
     }
 
-    public int getTier() {
-        return this.tier;
+    public int getModifier() {
+        return this.modifier;
     }
 
     private void sendOutPower() {
@@ -76,8 +83,8 @@ public class DeathGeneratorBlockEntity extends BlockEntity implements IGenerator
                             if (handler.canReceive()) {
                                 int received = handler.receiveEnergy(Math.min(capacity.get(), 1000), false);
                                 capacity.addAndGet(-received);
-								this.energyStorage.extractEnergy(received, false);
-								this.setChanged();
+                                this.energyStorage.extractEnergy(received, false);
+                                this.setChanged();
                                 return capacity.get() > 0;
                             } else {
                                 return true;

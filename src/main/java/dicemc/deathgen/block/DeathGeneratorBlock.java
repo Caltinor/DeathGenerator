@@ -26,22 +26,23 @@ import javax.annotation.Nullable;
 
 public class DeathGeneratorBlock extends Block implements EntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    private final Tier tier;
 
-    public DeathGeneratorBlock() {
+    public DeathGeneratorBlock(Tier tier) {
         super(Properties.of(Material.STONE)
                 .sound(SoundType.STONE)
                 .lightLevel(state -> 0)
                 .noOcclusion()
                 .strength(2.0f));
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+        this.tier = tier;
     }
 
-    public BlockState getStateForPlacement(BlockPlaceContext p_51377_) {
-        return this.defaultBlockState().setValue(FACING, p_51377_.getHorizontalDirection().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_51385_) {
-        p_51385_.add(FACING);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class DeathGeneratorBlock extends Block implements EntityBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!level.isClientSide) {
             BlockEntity tile = level.getBlockEntity(pos);
-            if (tile != null && tile instanceof DeathGeneratorBlockEntity dgbe) {
+            if (tile instanceof DeathGeneratorBlockEntity dgbe) {
                 TranslatableComponent text = new TranslatableComponent("msg.dicemcdeathgen.current_energy", dgbe.getEnergyAmount());
                 player.sendMessage(text, player.getUUID());
             } else {
@@ -73,5 +74,15 @@ public class DeathGeneratorBlock extends Block implements EntityBlock {
                 }
             };
         }
+    }
+
+    public Tier getTier() {
+        return this.tier;
+    }
+
+    public enum Tier {
+        TIER_1,
+        TIER_2,
+        TIER_3
     }
 }
