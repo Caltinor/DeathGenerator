@@ -27,15 +27,15 @@ public class Config {
     }
 
     private static void setupServer(ForgeConfigSpec.Builder builder) {
-        DAMAGE_RATIO = builder.comment("what percentage of damage should be drained per second")
+        DAMAGE_RATIO = builder.comment("What percentage of damage should be drained per second")
                 .defineInRange("Damage Ratio", 0.1, 0d, 1d);
         DAMAGE_RANGE = builder.comment("How far the generator should reach when draining entities")
                 .defineInRange("Damage Range", 10, 1, Integer.MAX_VALUE);
-        GENERATOR_CAPACITY = builder.comment("how much FE the base generator can hold")
+        GENERATOR_CAPACITY = builder.comment("How much FE the base generator can hold")
                 .defineInRange("Energy Capacity", 50000, 0, Integer.MAX_VALUE);
-        GENERATOR_TRANSFER_RATE = builder.comment("how much FE the base generator can transfer in one operation")
+        GENERATOR_TRANSFER_RATE = builder.comment("How much FE the base generator can transfer in one operation")
                 .defineInRange("Energy Capacity", 100, 0, Integer.MAX_VALUE);
-        ENERGY_PER_HITPOINT = builder.comment("how much FE is generate per point of health drained")
+        ENERGY_PER_HITPOINT = builder.comment("How much FE is generate per point of health drained")
                 .defineInRange("Energy Per Hitpoint", 10, 0, Double.MAX_VALUE);
         KILL_ANIMALS = builder.comment("Does the generator kill animals")
                 .define("Kill Animals", false);
@@ -46,6 +46,6 @@ public class Config {
         KILL_VILLAGERS = builder.comment("Does the generator kill villagers")
                 .define("Kill Villagers", false);
         KILL_PLAYERS = builder.comment("Does the generator kill players")
-                .define("Kill Playerss", false);
+                .define("Kill Players", false);
     }
 }

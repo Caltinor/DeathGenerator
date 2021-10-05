@@ -45,7 +45,7 @@ public class Registration {
     public static final RegistryObject<Item> TIER3_UPGRADE = ITEMS.register("upgrade_3", () -> new UpgradeItem(new Item.Properties().tab(CreativeModeTab.TAB_REDSTONE), DeathGeneratorBlock.Tier.TIER_2));
 
     //BLOCK ENTITIES
-    public static final RegistryObject<BlockEntityType<DeathGeneratorBlockEntity>> DEATH_GENERATOR_TYPE = BLOCKENTITIES.register("pumpkin_of", () -> BlockEntityType.Builder.of(DeathGeneratorBlockEntity::new, DEATH_GENERATOR_BLOCK.get(), DEATH_GENERATOR_BLOCK2.get(), DEATH_GENERATOR_BLOCK3.get()).build(null));
+    public static final RegistryObject<BlockEntityType<DeathGeneratorBlockEntity>> DEATH_GENERATOR_TYPE = BLOCKENTITIES.register("death_generator", () -> BlockEntityType.Builder.of(DeathGeneratorBlockEntity::new, DEATH_GENERATOR_BLOCK.get(), DEATH_GENERATOR_BLOCK2.get(), DEATH_GENERATOR_BLOCK3.get()).build(null));
 
     //CONTAINERS
 	/*public static final RegistryObject<MenuType<DeathGeneratorContainer>> GENERATOR_CONTAINER = CONTAINERS.register("death_generator", () -> IForgeContainerType.create((windowId, inv, data) -> {
