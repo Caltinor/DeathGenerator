@@ -17,6 +17,7 @@ public class DataCreator {
 
         if (event.includeServer()) {
             generator.addProvider(new EntityTagsProvider(generator, helper));
+            generator.addProvider(new LootTableProvider(generator));
         }
         if (event.includeClient()) {
             generator.addProvider(new ItemModelProvider(generator, helper));
