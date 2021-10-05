@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dicemcdeathgen:block/pumpkin_of_hellfire"
+    },
+    "facing=south": {
+      "model": "dicemcdeathgen:block/pumpkin_of_hellfire",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "dicemcdeathgen:block/pumpkin_of_hellfire",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "dicemcdeathgen:block/pumpkin_of_hellfire",
+      "y": 90
+    }
+  }
+}
