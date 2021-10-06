@@ -1,8 +1,0 @@
-{ 
-	"replace":true,
-	"values":[ 
-		"minecraft:iron_golem",
-		"minecraft:villager",
-		"minecraft:wandering_trader"
-	]
-}
