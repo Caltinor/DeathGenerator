@@ -8,8 +8,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.util.Constants.BlockFlags;
 
 public class UpgradeItem extends Item {
 
@@ -33,7 +33,7 @@ public class UpgradeItem extends Item {
                 return InteractionResult.FAIL;
             }
 
-            level.setBlock(pos, upgradedState, BlockFlags.BLOCK_UPDATE);
+            level.setBlock(pos, upgradedState, Block.UPDATE_CLIENTS);
             context.getItemInHand().shrink(1);
             return InteractionResult.CONSUME;
         }

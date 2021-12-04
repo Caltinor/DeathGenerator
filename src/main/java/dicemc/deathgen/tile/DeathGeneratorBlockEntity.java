@@ -49,7 +49,7 @@ public class DeathGeneratorBlockEntity extends BlockEntity {
 
     public void serverTick(Level world, BlockPos pos) {
         if (world.isClientSide) return;
-        AABB bounds = AABB.of(new BoundingBox(pos).inflate(Config.DAMAGE_RANGE.get()));
+        AABB bounds = AABB.of(new BoundingBox(pos).inflatedBy(Config.DAMAGE_RANGE.get()));
         List<LivingEntity> affectedEntities = world.getEntitiesOfClass(LivingEntity.class, bounds);
         double dmgRatio = Config.DAMAGE_RATIO.get();
         for (LivingEntity entity : affectedEntities) {

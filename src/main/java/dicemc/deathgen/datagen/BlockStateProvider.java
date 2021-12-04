@@ -1,7 +1,6 @@
 package dicemc.deathgen.datagen;
 
 import dicemc.deathgen.DeathGenerator;
-import dicemc.deathgen.block.DeathGeneratorBlock;
 import dicemc.deathgen.setup.Registration;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
@@ -12,7 +11,7 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fmllegacy.RegistryObject;
+import net.minecraftforge.registries.RegistryObject;
 
 public class BlockStateProvider extends net.minecraftforge.client.model.generators.BlockStateProvider {
 
