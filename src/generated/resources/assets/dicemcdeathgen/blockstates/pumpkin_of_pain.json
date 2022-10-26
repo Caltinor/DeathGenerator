@@ -1,5 +1,9 @@
 {
   "variants": {
+    "facing=east": {
+      "model": "dicemcdeathgen:block/pumpkin_of_pain",
+      "y": 90
+    },
     "facing=north": {
       "model": "dicemcdeathgen:block/pumpkin_of_pain"
     },
@@ -10,10 +14,6 @@
     "facing=west": {
       "model": "dicemcdeathgen:block/pumpkin_of_pain",
       "y": 270
-    },
-    "facing=east": {
-      "model": "dicemcdeathgen:block/pumpkin_of_pain",
-      "y": 90
     }
   }
 }

@@ -17,7 +17,7 @@ repositories {
     }
 }
 
-version = '1.19-0.0.1'
+version = '1.19.2-0.0.1'
 group = 'dicemc.deathgen'
 archivesBaseName = 'dicemcdeathgen'
 
@@ -65,7 +65,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.17'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.47'
 	//runtimeOnly fg.deobf("curse.maven:miner-282837:3476178")
 }
 
