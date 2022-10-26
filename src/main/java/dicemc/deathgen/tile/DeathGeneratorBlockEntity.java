@@ -42,9 +42,9 @@ public class DeathGeneratorBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag save(CompoundTag tag) {
+    public void saveAdditional(CompoundTag tag) {
         tag.put("energy", this.energyStorage.serializeNBT());
-        return super.save(tag);
+        super.saveAdditional(tag);
     }
 
     public void serverTick(Level world, BlockPos pos) {
@@ -53,10 +53,10 @@ public class DeathGeneratorBlockEntity extends BlockEntity {
         List<LivingEntity> affectedEntities = world.getEntitiesOfClass(LivingEntity.class, bounds);
         double dmgRatio = Config.DAMAGE_RATIO.get();
         for (LivingEntity entity : affectedEntities) {
-            if (!Config.KILL_ANIMALS.get() && Registration.ANIMALS.contains(entity.getType())) continue;
-            if (!Config.KILL_MONSTERS.get() && Registration.MONSTERS.contains(entity.getType())) continue;
-            if (!Config.KILL_ILLAGERS.get() && Registration.ILLAGERS.contains(entity.getType())) continue;
-            if (!Config.KILL_VILLAGERS.get() && Registration.VILLAGERS.contains(entity.getType())) continue;
+            if (!Config.KILL_ANIMALS.get() && entity.getType().is(Registration.ANIMALS)) continue;
+            if (!Config.KILL_MONSTERS.get() && entity.getType().is(Registration.MONSTERS)) continue;
+            if (!Config.KILL_ILLAGERS.get() && entity.getType().is(Registration.ILLAGERS)) continue;
+            if (!Config.KILL_VILLAGERS.get() && entity.getType().is(Registration.VILLAGERS)) continue;
             if (!Config.KILL_PLAYERS.get() && entity.getType().equals(EntityType.PLAYER)) continue;
             float damageDealt = entity.getMaxHealth() * (float) dmgRatio * this.modifier;
             entity.hurt(DamageSource.MAGIC, damageDealt);

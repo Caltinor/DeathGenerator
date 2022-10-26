@@ -19,14 +19,15 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         super(generator, DeathGenerator.MOD_ID, helper);
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     protected void registerStatesAndModels() {
         for (RegistryObject<Block> entry : Registration.BLOCKS.getEntries()) {
             Block block = entry.get();
             if (block.getStateDefinition().getProperties().contains(BlockStateProperties.HORIZONTAL_FACING)) {
                 VariantBlockStateBuilder builder = this.getVariantBuilder(block);
                 for (Direction direction : BlockStateProperties.HORIZONTAL_FACING.getPossibleValues()) {
-                    ResourceLocation registryName = block.getRegistryName();
+                    ResourceLocation registryName = block.builtInRegistryHolder().unwrapKey().get().location();
                     //noinspection ConstantConditions
                     ModelFile.ExistingModelFile model = this.models().getExistingFile(new ResourceLocation(registryName.getNamespace(), "block/" + registryName.getPath()));
                     builder.partialState().with(BlockStateProperties.HORIZONTAL_FACING, direction)

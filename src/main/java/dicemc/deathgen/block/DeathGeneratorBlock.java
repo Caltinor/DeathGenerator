@@ -2,8 +2,8 @@ package dicemc.deathgen.block;
 
 import dicemc.deathgen.tile.DeathGeneratorBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -54,8 +54,8 @@ public class DeathGeneratorBlock extends Block implements EntityBlock {
         if (!level.isClientSide) {
             BlockEntity tile = level.getBlockEntity(pos);
             if (tile instanceof DeathGeneratorBlockEntity dgbe) {
-                TranslatableComponent text = new TranslatableComponent("msg.dicemcdeathgen.current_energy", dgbe.getEnergyAmount());
-                player.sendMessage(text, player.getUUID());
+                MutableComponent text = Component.translatable("msg.dicemcdeathgen.current_energy", dgbe.getEnergyAmount());
+                player.sendSystemMessage(text);
             } else {
                 return InteractionResult.FAIL;
             }

@@ -4,15 +4,15 @@ import dicemc.deathgen.DeathGenerator;
 import dicemc.deathgen.block.DeathGeneratorBlock;
 import dicemc.deathgen.item.UpgradeItem;
 import dicemc.deathgen.tile.DeathGeneratorBlockEntity;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -55,8 +55,8 @@ public class Registration {
 	}));*/
 
     //TAGS
-    public static final Tags.IOptionalNamedTag<EntityType<?>> ANIMALS = EntityTypeTags.createOptional(new ResourceLocation(DeathGenerator.MOD_ID, "animals"));
-    public static final Tags.IOptionalNamedTag<EntityType<?>> MONSTERS = EntityTypeTags.createOptional(new ResourceLocation(DeathGenerator.MOD_ID, "monsters"));
-    public static final Tags.IOptionalNamedTag<EntityType<?>> ILLAGERS = EntityTypeTags.createOptional(new ResourceLocation(DeathGenerator.MOD_ID, "illagers"));
-    public static final Tags.IOptionalNamedTag<EntityType<?>> VILLAGERS = EntityTypeTags.createOptional(new ResourceLocation(DeathGenerator.MOD_ID, "villagers"));
+    public static final TagKey<EntityType<?>> ANIMALS = TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(DeathGenerator.MOD_ID, "animals"));
+    public static final TagKey<EntityType<?>> MONSTERS = TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(DeathGenerator.MOD_ID, "monsters"));
+    public static final TagKey<EntityType<?>> ILLAGERS = TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(DeathGenerator.MOD_ID, "illagers"));
+    public static final TagKey<EntityType<?>> VILLAGERS = TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(DeathGenerator.MOD_ID, "villagers"));
 }

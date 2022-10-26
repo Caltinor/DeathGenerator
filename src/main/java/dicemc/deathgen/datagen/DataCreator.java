@@ -16,12 +16,12 @@ public class DataCreator {
         ExistingFileHelper helper = event.getExistingFileHelper();
 
         if (event.includeServer()) {
-            generator.addProvider(new EntityTagsProvider(generator, helper));
-            generator.addProvider(new LootTableProvider(generator));
+            generator.addProvider(false, new EntityTagsProvider(generator, helper));
+            generator.addProvider(false, new LootTableProvider(generator));
         }
         if (event.includeClient()) {
-            generator.addProvider(new ItemModelProvider(generator, helper));
-            generator.addProvider(new BlockStateProvider(generator, helper));
+            generator.addProvider(true, new ItemModelProvider(generator, helper));
+            generator.addProvider(true, new BlockStateProvider(generator, helper));
         }
     }
 }

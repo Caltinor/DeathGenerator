@@ -28,16 +28,18 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         }
     }
 
-    private void blockItem(BlockItem item) {
-        ResourceLocation location = item.getRegistryName();
+    @SuppressWarnings("deprecation")
+	private void blockItem(BlockItem item) {
+        ResourceLocation location = item.builtInRegistryHolder().unwrapKey().get().location();
         //noinspection ConstantConditions
         this.getBuilder(location.getPath())
                 .parent(new AlwaysExistentModelFile(new ResourceLocation(location.getNamespace(), "block/" + location.getPath())));
     }
 
-    private void generated(Item item) {
+    @SuppressWarnings("deprecation")
+	private void generated(Item item) {
         //noinspection ConstantConditions
-        String path = item.getRegistryName().getPath();
+        String path = item.builtInRegistryHolder().unwrapKey().get().location().getPath();
         this.getBuilder(path)
                 .parent(this.getExistingFile(this.mcLoc("item/generated")))
                 .texture("layer0", "item/" + path);

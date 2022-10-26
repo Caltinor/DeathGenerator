@@ -16,7 +16,8 @@ public class EntityTagsProvider extends EntityTypeTagsProvider {
         super(generator, DeathGenerator.MOD_ID, helper);
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     protected void addTags() {
         this.tag(Registration.ANIMALS).add(
                 EntityType.BAT,
