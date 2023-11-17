@@ -7,16 +7,17 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
-public class BlockStateProvider extends net.minecraftforge.client.model.generators.BlockStateProvider {
+public class ModBlockStateProvider extends BlockStateProvider {
 
-    public BlockStateProvider(DataGenerator generator, ExistingFileHelper helper) {
-        super(generator, DeathGenerator.MOD_ID, helper);
+    public ModBlockStateProvider(DataGenerator generator, ExistingFileHelper helper) {
+        super(generator.getPackOutput(), DeathGenerator.MOD_ID, helper);
     }
 
     @SuppressWarnings("deprecation")

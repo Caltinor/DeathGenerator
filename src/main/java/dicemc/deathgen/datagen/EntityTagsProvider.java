@@ -2,6 +2,7 @@ package dicemc.deathgen.datagen;
 
 import dicemc.deathgen.DeathGenerator;
 import dicemc.deathgen.setup.Registration;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
@@ -9,16 +10,17 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 public class EntityTagsProvider extends EntityTypeTagsProvider {
 
-    public EntityTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper helper) {
-        super(generator, DeathGenerator.MOD_ID, helper);
+    public EntityTagsProvider(DataGenerator generator, CompletableFuture<HolderLookup.Provider> thing, @Nullable ExistingFileHelper helper) {
+        super(generator.getPackOutput(), thing, DeathGenerator.MOD_ID, helper);
     }
 
     @SuppressWarnings("unchecked")
 	@Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider p_255894_) {
         this.tag(Registration.ANIMALS).add(
                 EntityType.BAT,
                 EntityType.BEE,

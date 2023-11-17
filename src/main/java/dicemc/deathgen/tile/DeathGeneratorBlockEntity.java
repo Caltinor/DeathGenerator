@@ -6,7 +6,6 @@ import dicemc.deathgen.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -14,7 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.energy.EnergyStorage;
 
 import java.util.List;
@@ -59,7 +58,7 @@ public class DeathGeneratorBlockEntity extends BlockEntity {
             if (!Config.KILL_VILLAGERS.get() && entity.getType().is(Registration.VILLAGERS)) continue;
             if (!Config.KILL_PLAYERS.get() && entity.getType().equals(EntityType.PLAYER)) continue;
             float damageDealt = entity.getMaxHealth() * (float) dmgRatio * this.modifier;
-            entity.hurt(DamageSource.MAGIC, damageDealt);
+            entity.hurt(world.damageSources().magic(), damageDealt);
             this.energyStorage.receiveEnergy((int) (damageDealt * Config.ENERGY_PER_HITPOINT.get()), false);
         }
         this.sendOutPower();
@@ -79,7 +78,7 @@ public class DeathGeneratorBlockEntity extends BlockEntity {
             Direction direction = this.level.getBlockState(this.worldPosition).getValue(DeathGeneratorBlock.FACING).getOpposite();
             BlockEntity te = this.level.getBlockEntity(this.worldPosition.relative(direction));
             if (te != null) {
-                boolean doContinue = te.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
+                boolean doContinue = te.getCapability(ForgeCapabilities.ENERGY, direction).map(handler -> {
                             if (handler.canReceive()) {
                                 int received = handler.receiveEnergy(Math.min(capacity.get(), 1000), false);
                                 capacity.addAndGet(-received);

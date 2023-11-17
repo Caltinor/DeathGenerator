@@ -1,5 +1,5 @@
 modLoader="javafml" 
-loaderVersion="[41,)"
+loaderVersion="[47,)"
 license="All rights reserved"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
 
@@ -16,13 +16,13 @@ A generator that sucks the life out of things around you and gives it to you as 
 [[dependencies.dicemcdeathgen]] #optional
     modId="forge"
     mandatory=true
-    versionRange="[41,)"
+    versionRange="[47,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.dicemcdeathgen]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,1.20)"
+    versionRange="[1.20,1.20.2)"
     ordering="NONE"
     side="BOTH"
